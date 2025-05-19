@@ -60,5 +60,6 @@ src/
 
 ## Screenshots
 
-[Add a screenshot of your dashboard here]
+
+![Screenshot 2025-05-19 213703](https://github.com/user-attachments/assets/839c75c6-c7f1-43f1-ad0d-3818fb62a82d)
 
