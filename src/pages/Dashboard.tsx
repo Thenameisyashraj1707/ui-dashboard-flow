@@ -32,6 +32,21 @@ const Dashboard = () => {
             <TabsTrigger value="scheduled-articles">Scheduled Articles</TabsTrigger>
             <TabsTrigger value="archived-articles">Archived Articles</TabsTrigger>
           </TabsList>
+          
+          <div className="mt-4">
+            <TabsContent value="all-articles" className="m-0">
+              <DashboardTable />
+            </TabsContent>
+            <TabsContent value="published-articles" className="m-0">
+              <DashboardTable filter="published" />
+            </TabsContent>
+            <TabsContent value="scheduled-articles" className="m-0">
+              <DashboardTable filter="scheduled" />
+            </TabsContent>
+            <TabsContent value="archived-articles" className="m-0">
+              <DashboardTable filter="archived" />
+            </TabsContent>
+          </div>
         </Tabs>
 
         <div className="relative w-full sm:w-auto">
@@ -43,19 +58,6 @@ const Dashboard = () => {
           />
         </div>
       </div>
-
-      <TabsContent value="all-articles" className="m-0">
-        <DashboardTable />
-      </TabsContent>
-      <TabsContent value="published-articles" className="m-0">
-        <DashboardTable filter="published" />
-      </TabsContent>
-      <TabsContent value="scheduled-articles" className="m-0">
-        <DashboardTable filter="scheduled" />
-      </TabsContent>
-      <TabsContent value="archived-articles" className="m-0">
-        <DashboardTable filter="archived" />
-      </TabsContent>
     </div>
   );
 };
