@@ -68,12 +68,14 @@ const Sidebar = () => {
                       className={({ isActive }) =>
                         isActive || 
                         (item.path === "/" && location.pathname === "/")
-                          ? "bg-sidebar-accent text-sidebar-accent-foreground font-bold"
-                          : "hover:font-semibold transition-all"
+                          ? "bg-sidebar-accent text-sidebar-accent-foreground font-bold shadow-md rounded-md"
+                          : "hover:font-semibold transition-all hover:bg-slate-50 hover:shadow-sm rounded-md"
                       }
                     >
                       <item.icon size={18} className="stroke-[2.5px]" />
-                      <span className="font-medium">{item.title}</span>
+                      <span className="font-medium text-base">
+                        {item.title}
+                      </span>
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

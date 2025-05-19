@@ -1,11 +1,10 @@
 
 import { useState } from "react";
 import { DashboardTable } from "@/components/DashboardTable";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
-import { Search, PlusCircle } from "lucide-react";
+import { PlusCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("all-articles");
@@ -16,7 +15,7 @@ const Dashboard = () => {
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">Articles</h1>
         <Button 
-          className="hidden md:flex items-center gap-2"
+          className="flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-primary to-primary/80"
           onClick={() => navigate("/create-article")}
         >
           <PlusCircle className="h-4 w-4" />
@@ -24,7 +23,7 @@ const Dashboard = () => {
         </Button>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
+      <div className="flex flex-col gap-4 justify-between">
         <Tabs 
           defaultValue="all-articles" 
           className="w-full" 
@@ -53,15 +52,6 @@ const Dashboard = () => {
             </TabsContent>
           </div>
         </Tabs>
-
-        <div className="relative w-full sm:w-auto">
-          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search for articles..."
-            className="pl-8 w-full sm:w-[300px] bg-background"
-          />
-        </div>
       </div>
     </div>
   );
