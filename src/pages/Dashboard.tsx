@@ -5,15 +5,20 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Search, PlusCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("all-articles");
+  const navigate = useNavigate();
   
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">Articles</h1>
-        <Button className="hidden md:flex items-center gap-2">
+        <Button 
+          className="hidden md:flex items-center gap-2"
+          onClick={() => navigate("/create-article")}
+        >
           <PlusCircle className="h-4 w-4" />
           Create Article
         </Button>

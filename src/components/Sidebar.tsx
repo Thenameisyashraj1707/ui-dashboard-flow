@@ -21,6 +21,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 // Navigation menu items
 const menuItems = [
@@ -33,7 +34,6 @@ const menuItems = [
     title: "Articles",
     path: "/",
     icon: FileText,
-    active: true,
   },
   {
     title: "Analytics",
@@ -54,11 +54,12 @@ const menuItems = [
 
 const Sidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   
   return (
     <SidebarComponent>
       <SidebarHeader className="p-4">
-        <span className="text-xl font-bold">abun</span>
+        <span className="text-xl font-bold">yashraj</span>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
@@ -71,7 +72,9 @@ const Sidebar = () => {
                     <NavLink
                       to={item.path}
                       className={({ isActive }) =>
-                        isActive || (item.path === "/" && location.pathname === "/") || item.active
+                        isActive || 
+                        (item.path === "/" && location.pathname === "/") || 
+                        (item.title === "Articles" && location.pathname === "/")
                           ? "bg-sidebar-accent text-sidebar-accent-foreground"
                           : ""
                       }
@@ -88,7 +91,11 @@ const Sidebar = () => {
       </SidebarContent>
       <SidebarFooter>
         <div className="p-4">
-          <Button className="w-full flex items-center gap-2" size="sm">
+          <Button 
+            className="w-full flex items-center gap-2" 
+            size="sm"
+            onClick={() => navigate("/create-article")}
+          >
             <PlusCircle size={16} />
             <span>Create Article</span>
           </Button>
