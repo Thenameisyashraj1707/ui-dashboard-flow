@@ -7,7 +7,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 const Layout = () => {
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-slate-50">
+      <div className="min-h-screen flex w-full bg-gradient-to-tr from-slate-50 to-slate-100">
         <Sidebar />
         <div className="flex-1 flex flex-col">
           <Header />

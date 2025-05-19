@@ -2,7 +2,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { 
   BarChart2, 
-  FileText, 
   Home, 
   Settings, 
   Users,
@@ -29,11 +28,6 @@ const menuItems = [
     title: "Dashboard",
     path: "/",
     icon: Home,
-  },
-  {
-    title: "Articles",
-    path: "/",
-    icon: FileText,
   },
   {
     title: "Analytics",
@@ -73,14 +67,13 @@ const Sidebar = () => {
                       to={item.path}
                       className={({ isActive }) =>
                         isActive || 
-                        (item.path === "/" && location.pathname === "/") || 
-                        (item.title === "Articles" && location.pathname === "/")
-                          ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                          : ""
+                        (item.path === "/" && location.pathname === "/")
+                          ? "bg-sidebar-accent text-sidebar-accent-foreground font-bold"
+                          : "hover:font-semibold transition-all"
                       }
                     >
-                      <item.icon size={18} />
-                      <span>{item.title}</span>
+                      <item.icon size={18} className="stroke-[2.5px]" />
+                      <span className="font-medium">{item.title}</span>
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -92,7 +85,7 @@ const Sidebar = () => {
       <SidebarFooter>
         <div className="p-4">
           <Button 
-            className="w-full flex items-center gap-2" 
+            className="w-full flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-primary to-primary/80" 
             size="sm"
             onClick={() => navigate("/create-article")}
           >

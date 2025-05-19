@@ -17,11 +17,6 @@ const Header = () => {
           />
         </div>
       </div>
-      <div className="ml-auto flex items-center gap-4">
-        <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground">
-          <span className="font-medium text-sm">A</span>
-        </div>
-      </div>
     </header>
   );
 };

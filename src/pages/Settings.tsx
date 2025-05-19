@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import {
   Card,
   CardContent,
@@ -11,8 +12,33 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
+import { toast } from "sonner";
 
 const Settings = () => {
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "Admin User",
+    email: "admin@example.com",
+    timezone: "UTC+00:00"
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSaveChanges = () => {
+    setLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      setLoading(false);
+      toast.success("Settings saved successfully!");
+    }, 1000);
+  };
+
   return (
     <div className="space-y-6">
       <div>
@@ -21,13 +47,13 @@ const Settings = () => {
       </div>
 
       <Tabs defaultValue="general" className="space-y-4">
-        <TabsList>
+        <TabsList className="bg-background/60 backdrop-blur-sm">
           <TabsTrigger value="general">General</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
           <TabsTrigger value="appearance">Appearance</TabsTrigger>
         </TabsList>
         <TabsContent value="general" className="space-y-4">
-          <Card>
+          <Card className="border-2 shadow-md hover:shadow-lg transition-all duration-300">
             <CardHeader>
               <CardTitle>Profile</CardTitle>
               <CardDescription>
@@ -38,18 +64,36 @@ const Settings = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" placeholder="Your name" defaultValue="Admin User" />
+                  <Input 
+                    id="name" 
+                    placeholder="Your name" 
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="focus:ring-2 focus:ring-primary/25" 
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" placeholder="Your email" defaultValue="admin@example.com" />
+                  <Input 
+                    id="email" 
+                    placeholder="Your email" 
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="focus:ring-2 focus:ring-primary/25" 
+                  />
                 </div>
               </div>
-              <Button>Save changes</Button>
+              <Button 
+                onClick={handleSaveChanges} 
+                disabled={loading}
+                className="relative overflow-hidden shadow-lg hover:shadow-xl bg-gradient-to-r from-primary to-primary/80 transition-all duration-300"
+              >
+                {loading ? "Saving..." : "Save changes"}
+              </Button>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="border-2 shadow-md hover:shadow-lg transition-all duration-300">
             <CardHeader>
               <CardTitle>Account</CardTitle>
               <CardDescription>
@@ -59,14 +103,26 @@ const Settings = () => {
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="timezone">Timezone</Label>
-                <Input id="timezone" placeholder="Your timezone" defaultValue="UTC+00:00" />
+                <Input 
+                  id="timezone" 
+                  placeholder="Your timezone" 
+                  value={formData.timezone}
+                  onChange={handleInputChange}
+                  className="focus:ring-2 focus:ring-primary/25"
+                />
               </div>
-              <Button>Save changes</Button>
+              <Button 
+                onClick={handleSaveChanges} 
+                disabled={loading}
+                className="relative overflow-hidden shadow-lg hover:shadow-xl bg-gradient-to-r from-primary to-primary/80 transition-all duration-300"
+              >
+                {loading ? "Saving..." : "Save changes"}
+              </Button>
             </CardContent>
           </Card>
         </TabsContent>
         <TabsContent value="notifications" className="space-y-4">
-          <Card>
+          <Card className="border-2 shadow-md hover:shadow-lg transition-all duration-300">
             <CardHeader>
               <CardTitle>Notification Preferences</CardTitle>
               <CardDescription>
@@ -92,11 +148,18 @@ const Settings = () => {
                 </div>
                 <Switch />
               </div>
+              <Button 
+                onClick={handleSaveChanges} 
+                disabled={loading}
+                className="relative overflow-hidden shadow-lg hover:shadow-xl bg-gradient-to-r from-primary to-primary/80 transition-all duration-300"
+              >
+                {loading ? "Saving..." : "Save changes"}
+              </Button>
             </CardContent>
           </Card>
         </TabsContent>
         <TabsContent value="appearance" className="space-y-4">
-          <Card>
+          <Card className="border-2 shadow-md hover:shadow-lg transition-all duration-300">
             <CardHeader>
               <CardTitle>Theme</CardTitle>
               <CardDescription>
@@ -113,6 +176,13 @@ const Settings = () => {
                 </div>
                 <Switch />
               </div>
+              <Button 
+                onClick={handleSaveChanges} 
+                disabled={loading}
+                className="relative overflow-hidden shadow-lg hover:shadow-xl bg-gradient-to-r from-primary to-primary/80 transition-all duration-300"
+              >
+                {loading ? "Saving..." : "Save changes"}
+              </Button>
             </CardContent>
           </Card>
         </TabsContent>
