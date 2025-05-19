@@ -52,8 +52,9 @@ const Sidebar = () => {
   
   return (
     <SidebarComponent>
-      <SidebarHeader className="p-4">
-        <span className="text-xl font-bold">yashraj</span>
+      <SidebarHeader className="p-4 flex flex-col">
+        <span className="text-xl font-bold">YASHRAJ</span>
+        <span className="text-xs text-muted-foreground">MADE BY YASHRAJ</span>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
